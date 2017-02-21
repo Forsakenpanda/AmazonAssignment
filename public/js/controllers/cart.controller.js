@@ -13,7 +13,6 @@
             var total = 0;
             for(var i = 0; i < $rootScope.cart.length; i++){
                 total += ($rootScope.cart[i].price * $rootScope.cart[i].quantity);
-                console.log(total);
             }
             return total;
         }
@@ -26,9 +25,7 @@
                     url:'updateCredits',
                     method:'POST',
                     data:$rootScope.user
-                }).then(function(response){
-                    console.log(response);
-                })
+                });
             } else {
                 alert("Insufficient Credits");
             }

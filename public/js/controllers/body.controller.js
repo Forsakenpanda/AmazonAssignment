@@ -18,20 +18,18 @@
                 method: 'POST',
                 data: $scope.info
             }).then(function(response){
-                console.log('response:', response);
                 alert(response.data.message);
                 
             })
         }
 
         $scope.login =function() {
-            console.log("Here");
             $http({
                 url:'/login',
                 method:'POST',
                 data:{user:$scope.loginInfo.username, pass:$scope.loginInfo.password}
             }).then(function(response){
-                console.log('response:', response);
+                console.log("Response");
                 if(response.data.message){
                     $scope.error = response.data.message;
                 } else {

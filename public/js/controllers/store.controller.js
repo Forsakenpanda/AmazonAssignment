@@ -9,7 +9,6 @@
             $location.path('/');
         }
         $scope.type = $routeParams.type;
-        console.log($rootScope.products);
         $scope.add = function(product){
             for (var i = 0; i < $rootScope.cart.length; i++) {
                 if ($rootScope.cart[i].name === product.name){
@@ -22,8 +21,6 @@
                 price:product.price,
                 quantity:1
             });
-
-            console.log($rootScope.cart);
         }
 
     }

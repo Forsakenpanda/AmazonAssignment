@@ -73,7 +73,6 @@ passport.use('register-local', new LocalStrategy({
 	passReqToCallback:true
 }, function(req, username, password, done){
 	connection.query("SELECT * FROM Users WHERE username='" + username +"'", function(err, rows){
-		console.log(rows);
 		if (err){
 			return done(err);
 		} 
@@ -103,7 +102,6 @@ app.post('/register', function(req, res, next){
 
 //Updates the amount of credits to a user
 app.post('/updateCredits', function(req, res){
-	console.log(req.body);
 	connection.query("UPDATE Users SET credits=" + req.body.credits + " WHERE userID=" + req.body.id);
 })
 
@@ -112,14 +110,13 @@ app.post('/updateCredits', function(req, res){
 
 app.post('/login',function(req, res, next){
 	passport.authenticate('login-local', function(err, user, data){
-		console.log(data);
 		if (!user){
 			res.json(data);
 			//res.status(500).send("Error logging in");
 		} else {
 			res.json(user);
 			connection.query("UPDATE Users SET isSignedIn=1 WHERE username='" + req.body.user+ "' AND password='" + req.body.pass +"'");
-			setTimeout(function(){autoLogOut(req.body.user, req.body.pass)}, 300000);//5 minutes
+			setTimeout(function(){autoLogOut(req.body.user, req.body.pass)}, 60000);//1 minute
 		}
 	})(req, res, next);
 
@@ -135,7 +132,6 @@ app.get('/getCount', function(req, res){
 			console.error(err);
 			res.status(500).send("Could not obtain count");
 		} else {
-			console.log(data[0]['COUNT(*)']);
 			res.json(data[0]['COUNT(*)']);
 		}
 	})
@@ -148,7 +144,6 @@ app.get('/getProducts', function(req,res){
 			console.error(err);
 			res.status(500).send("Could not read products");
 		} else {
-			console.log(data);
 			res.json(data);
 		}
 	})
@@ -157,7 +152,6 @@ app.get('/getProducts', function(req,res){
 
 //Automatically log out a user
 function autoLogOut(username, password){
-	console.log("Logging out");
 	var stringQuery = "UPDATE Users SET isSignedIn=0 WHERE username='" + username + "' AND password='" + password +"'";
 	connection.query(stringQuery, function(err, data){
 		if (err){

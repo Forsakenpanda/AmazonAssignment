@@ -18,8 +18,6 @@
 
         .otherwise({
             redirectTo: function(params, currentPath){
-                console.log(currentPath);
-                console.log("Otherwise hit");
                 return '/';
             }
         })
