@@ -1,6 +1,9 @@
 (function() {
     'use strict';
-
+    /**
+     * Created by 100514374 on February 19th, 2017
+     * Controller for the user's cart 
+     */
     angular.module('myApp').controller('cartController', cartController);
     function cartController($scope, $rootScope, $http, $location){
         if(!$rootScope.loggedIn){

@@ -39,6 +39,7 @@
             })   
         }
 
+        //Get the products and count of active users immediately, and get the count of users every 5 seconds to keep track.
         getCount();
         getProducts();
         $interval(function(){

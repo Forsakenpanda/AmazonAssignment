@@ -1,6 +1,9 @@
 (function() {
     'use strict';
-
+    /**
+     * Created by 100514374 on February 19th, 2017
+     * Controller for the store fronts  
+     */
     angular.module('myApp').controller('storeController', storeController);
 
     function storeController($scope,$rootScope, $routeParams, $location){

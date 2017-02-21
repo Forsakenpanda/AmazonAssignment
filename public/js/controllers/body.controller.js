@@ -1,8 +1,11 @@
 (function(){
     'use strict';
+    /**
+     * Created by 100514374 on February 19th, 2017
+     * Controller for registration and logging in. 
+     */
     angular.module('myApp').controller('bodyController', bodyController);
     function bodyController($scope, $rootScope, $http){
-        console.log("Loaded");
         $scope.info = {
             username:"",
             password:"",
@@ -29,7 +32,6 @@
                 method:'POST',
                 data:{user:$scope.loginInfo.username, pass:$scope.loginInfo.password}
             }).then(function(response){
-                console.log("Response");
                 if(response.data.message){
                     $scope.error = response.data.message;
                 } else {

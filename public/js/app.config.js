@@ -7,7 +7,7 @@
     'use strict';
     angular.module('myApp',['ngRoute']).config(function($locationProvider, $routeProvider){
         $locationProvider.hashPrefix('');
-        $routeProvider
+        $routeProvider //Handles all the routes sent in the front end (changing views, not affecting the backend)
 
         .when('/store/:type', {
             templateUrl:'/views/store.html'
