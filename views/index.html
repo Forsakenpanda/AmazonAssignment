@@ -1,0 +1,41 @@
+<html ng-app="myApp">
+    <head>
+        <!--Utility Initialization-->
+        <link rel="stylesheet" type="text/css" href="public/stylesheets/main.css" />
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        <script src="node_modules/angular-route/angular-route.min.js"></script>
+        <script src="public/js/app.config.js"></script>
+        <script src="public/js/app.run.js"></script>
+
+        <!--CONTROLLERS-->
+        <script src="public/js/controllers/body.controller.js"></script>
+        <script src="public/js/controllers/store.controller.js"></script>
+        <script src="public/js/controllers/cart.controller.js"></script>
+
+    </head>
+    <body>
+        <div class="headerBar">
+            <span class="headerElement">Amazon AWS Assignment: Billy's Pawn Shop</span>
+        </div>
+        <ul class="navBar">
+            <li class="navElement navDropDown">
+                <a class="navText">Products</a>
+                <div class="navContent">
+                    <a ng-href="#/store/hardware">Hardware</a>
+                    <a href="#/store/entertainment">Entertainment</a>
+                </div>
+            </li>
+            <li class="navElement" style="float:right">
+                <a class="navText" href="#/cart">Your Cart ({{cart.length}})</a>
+            </li>            
+        </ul>
+        <div ng-view></div>
+
+
+    </body>
+    <footer>
+        <div class="footerBar">
+            <span class="headerElement">Currently Signed in: {{count}}</span>
+        </div>
+    </footer>
+</html>

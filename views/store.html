@@ -1,0 +1,17 @@
+<div class="bodyContent" ng-controller="storeController">
+    <h1>Store</h1>
+    <table class="productTable">
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Add to Cart</th>
+        </tr>
+        <tr ng-repeat="product in products" ng-if="product.category == type">
+            <th>{{product.name}}</th>
+            <th>{{product.price}}</th>
+            <th><button ng-click="add(product)">Add to Cart</th>
+        </tr>
+    </table>
+    
+    
+</div>
